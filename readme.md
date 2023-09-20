@@ -40,6 +40,8 @@ Usage:
    fsm.transition('next'); // 'state2' is the new state, access it at fsm.currentState
    fsm.transition('prev'); // 'state1' is the new state, access it at fsm.currentState
 
+
+Or see example in src\example.ts
 ```
 
 
