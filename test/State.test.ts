@@ -1,4 +1,4 @@
-import { State } from '../src/State';
+import {State} from "./State";
 
 describe('State class', () => {
   it('should add transitions correctly', () => {

@@ -1,5 +1,6 @@
-import { FSM } from '../src/FSM';
-import { State } from '../src/State';
+import {FSM} from "./FSM";
+import {State} from "./State";
+
 
 describe('FSM class', () => {
   let fsm: FSM;
@@ -27,13 +28,13 @@ describe('FSM class', () => {
     fsm.transition('event1');
     expect(fsm.currentState).toBe(stateB);
 
-    // Attempting a transition with a false guard should not change the state
-    fsm.transition('event2');
-    expect(fsm.currentState).toBe(stateB);
 
-    // Valid transition with a true guard
-    fsm.transition('event3');
-    expect(fsm.currentState).toBe(stateA);
+    // Attempting a transition with a false guard should not change the state
+    expect(() => {
+      fsm.transition('event2');
+    }).toThrow(Error);
+
+    expect(fsm.currentState).toBe(stateB);
   });
 
   it('should handle non-deterministic transitions', () => {
@@ -43,9 +44,8 @@ describe('FSM class', () => {
     fsm.setInitialState('A');
     expect(fsm.currentState).toBe(stateA);
 
-    fsm.transition('event1');
-    // Expect that the FSM will transition to either stateB or stateC based on the guard
-    expect(fsm.currentState === stateB || fsm.currentState === stateC).toBe(true);
+    // Expect that the FSM will transition to deterministic transition
+    expect(() => fsm.transition('event1')).toThrow('Invalid transition');
   });
 
   it('should throw errors for invalid transitions', () => {

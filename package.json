@@ -10,12 +10,6 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
   },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "collectCoverage": true,
-    "collectCoverageFrom": ["src/**/*.ts"]
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
